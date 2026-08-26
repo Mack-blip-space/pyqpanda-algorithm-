@@ -18,6 +18,13 @@ pyqpanda-algorithm 是由本源量子（Origin Quantum）开发的量子算法�
 
 软件包官网： [https://qcloud.originqc.com.cn/zh/programming/pyqpanda-algorithm]
 
+### QSEncode-Insight
+
+新增的 QSEncode-Insight 根据保真度预算、态制备兼容性和实际编译资源，
+推荐压缩或明确拒绝无收益的压缩，同时保持原 `QSpare_Code` 接口不变。
+使用说明、CLI、Notebook 与验证边界见
+[QSEncode-Insight 文档](pyqpanda-algorithm/pyqpanda_alg/QSEncode/README.md)。
+
 ------
 
 ## **核心特点**
