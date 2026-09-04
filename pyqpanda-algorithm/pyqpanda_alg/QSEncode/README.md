@@ -8,6 +8,16 @@ compiled-resource auditing, and a refusal path when compression is not useful.
 It is a new API alongside the existing `QSpare_Code`; the legacy class and its
 behavior remain unchanged.
 
+## Contribution boundary
+
+QSEncode-Insight is an innovation-application tool, not a claim of a newly
+invented low-level state-preparation decomposition. The circuit constructors
+`amplitude_encode`, `sparse_isometry`, and `ds_quantum_state_preparation` are
+provided by PyQPanda3. This package contributes the end-to-end decision layer:
+canonical input handling, fast transforms, fidelity-budgeted `k*`, capability
+filtering, repeated compiled-resource auditing, deterministic selection,
+semantic verification, resource attribution, and explicit refusal.
+
 ```text
 probability distribution
         ↓
@@ -51,9 +61,12 @@ hardware acceleration, or guaranteed savings for every distribution.
 
 ## Source-checkout setup
 
-This repository is a source checkout. Install the dependencies already used by
-the project, including PyQPanda3, NumPy, and SciPy, then expose the inner source
-directory to Python.
+This repository is a source checkout. From the repository root, install the
+QSEncode-Insight lock file and expose the inner source directory to Python:
+
+```bash
+python -m pip install -r pyqpanda-algorithm/requirements-qseencode-insight.txt
+```
 
 PowerShell:
 
@@ -73,6 +86,35 @@ Validated contest environment:
 - PyQPanda3 0.3.5
 - NumPy 2.4.6
 - SciPy 1.17.1
+- SymPy 1.14.0
+- Matplotlib 3.10.9
+
+Submission compatibility was independently rechecked in a clean Python 3.12.10
+environment with the same pinned scientific stack. The QSEncode-Insight suite
+passed 237 tests, the full repository suite passed 254 tests, a wheel was built
+and installed, and the API, CLI, and notebook Run-All smoke checks passed. The
+benchmark claim itself remains tied to the frozen Python 3.14.2 environment
+described below.
+
+For the exact test environment, also install:
+
+```bash
+python -m pip install -r pyqpanda-algorithm/requirements-qseencode-insight-test.txt
+```
+
+The repository's historical `test/pytest.ini` enables Allure command-line
+options. QSEncode-Insight provides a dependency-light test configuration that
+does not require Allure:
+
+```powershell
+$env:PYTHONPATH = (Resolve-Path .\pyqpanda-algorithm).Path
+python -m pytest -c pyqpanda-algorithm/pytest-qseencode.ini
+```
+
+```bash
+export PYTHONPATH="$PWD/pyqpanda-algorithm${PYTHONPATH:+:$PYTHONPATH}"
+python -m pytest -c pyqpanda-algorithm/pytest-qseencode.ini
+```
 
 ## Quick start
 
@@ -173,6 +215,7 @@ JSON file, and `--pretty` for indented output.
 
 - Notebook: `example/QAlgBase/QSEncode_Insight_Demo.ipynb`
 - Benchmark summary: [BENCHMARK_EVIDENCE.md](BENCHMARK_EVIDENCE.md)
+- Visual benchmark summary: [BENCHMARK_VISUAL_SUMMARY.md](BENCHMARK_VISUAL_SUMMARY.md)
 
 The notebook uses only the small sealed N=8 example and does not run the
 480-cell benchmark.

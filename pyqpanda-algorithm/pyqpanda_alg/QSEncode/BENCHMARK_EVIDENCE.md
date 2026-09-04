@@ -15,6 +15,11 @@ separately; the benchmark did not test an automatic cross-basis selector.
 
 All 480 cells completed under the frozen environment and analysis protocol.
 
+A presentation-oriented view of the same frozen results, including dimension,
+family, refusal, and attribution breakdowns, is available in
+[BENCHMARK_VISUAL_SUMMARY.md](BENCHMARK_VISUAL_SUMMARY.md). It is descriptive
+only and does not replace the preregistered aggregation below.
+
 | Basis | Compiled 2q selector-all | Compiled depth selector-all | Gate |
 |---|---:|---:|---|
 | Walsh | 45.27% | 48.78% | strong pass |
